@@ -6,7 +6,7 @@ namespace FSCTMM_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("MEGFOGOMCSINÁLNI");
+            Console.WriteLine("test commit");
         }
     }
 }
