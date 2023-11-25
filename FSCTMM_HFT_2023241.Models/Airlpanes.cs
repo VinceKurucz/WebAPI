@@ -21,12 +21,14 @@ namespace FSCTMM_HFT_2023241.Models
         public int Speed { get; set;}
 
 
+        public int AirportId { get; set; }
+
         [NotMapped]
-        public virtual ICollection<Airports> Airports { get; set; }
+        public virtual Airports Airports { get; set; }
 
 
         [NotMapped]
-        public virtual ICollection<People> People { get; set; }
+        public virtual ICollection<Crew> Crew { get; set; }
 
     }
 }
