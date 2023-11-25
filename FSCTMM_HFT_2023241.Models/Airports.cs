@@ -16,7 +16,7 @@ namespace FSCTMM_HFT_2023241.Models
 
         public int Id { get; set; }
 
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public int TakeOffPlatform { get; set; }
 

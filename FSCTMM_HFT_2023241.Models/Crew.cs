@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Models
 {
-    public class People
+    public class Crew
     {
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int Name { get; set; }
+        public int NumberOfCrew { get; set; }
 
-        public string Gender { get; set; }
+        public string Reputation { get; set; }
 
+        public int AirplaneId { get; set; }
 
 
         [NotMapped]
-        public virtual ICollection<Airlpanes> Airlpanes { get; set; }
+        public virtual Airlpanes Airlpanes { get; set; }
     }
 }

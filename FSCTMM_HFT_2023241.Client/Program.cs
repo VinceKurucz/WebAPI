@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using FSCTMM_HFT_2023241.Repository;
+using System.Linq;
 
 namespace FSCTMM_HFT_2023241.Client
 {
@@ -6,7 +9,13 @@ namespace FSCTMM_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test commit");
+            AirplaneDbContext db = new AirplaneDbContext();
+
+            //teszt
+            var egy = db.Airport.Select(t => t.TakeOffPlatform);
+
+            ;
+
         }
     }
 }
