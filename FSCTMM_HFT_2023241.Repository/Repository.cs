@@ -9,7 +9,7 @@ namespace FSCTMM_HFT_2023241.Repository
     public abstract class Repository<T> : Irepository<T>where T : class
     {
 
-        AirplaneDbContext ctx;
+        public AirplaneDbContext ctx;
 
         public Repository(AirplaneDbContext ctx)
         {
