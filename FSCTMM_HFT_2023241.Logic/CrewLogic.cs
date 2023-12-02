@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Logic
 {
-    internal class AirplaneLogic : IAirplaneLogic
+    public class CrewLogic : ICrewLogic
     {
-        Irepository<Airlpanes> repo;
+        Irepository<Crew> repo;
 
-        public AirplaneLogic(Irepository<Airlpanes> rep)
+        public CrewLogic(Irepository<Crew> rep)
         {
-            repo = rep;
+                repo = rep;
         }
-        public void Create(Airlpanes item)
+        public void Create(Crew item)
         {
-            if (item.Capacity < 30)
+            if(item.NumberOfCrew < 3) 
             {
-                throw new ArgumentException("too few seats");
+                throw new ArgumentException("too few crew");
             }
-            repo.Create(item);
+           repo.Create(item);
         }
 
         public void Delete(int id)
@@ -31,17 +31,17 @@ namespace FSCTMM_HFT_2023241.Logic
             repo.Delete(id);
         }
 
-        public Airlpanes Read(int id)
+        public Crew Read(int id)
         {
-            return repo.Read(id);
+           return repo.Read(id);
         }
 
-        public IQueryable<Airlpanes> ReadAll()
+        public IQueryable<Crew> ReadAll()
         {
             return repo.ReadAll();
         }
 
-        public void Update(Airlpanes item)
+        public void Update(Crew item)
         {
             repo.Update(item);
         }
