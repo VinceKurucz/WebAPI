@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Logic
 {
-    internal class AirplaneLogic : IAirplaneLogic
+    public class AirplaneLogic : IAirplaneLogic
     {
         Irepository<Airlpanes> repo;
 

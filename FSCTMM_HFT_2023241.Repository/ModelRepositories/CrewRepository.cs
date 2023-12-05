@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 {
-    internal class CrewRepository : Repository<Crew>, Irepository<Crew>
+    public class CrewRepository : Repository<Crew>, Irepository<Crew>
     {
 
         public CrewRepository(AirplaneDbContext ctx) : base(ctx)

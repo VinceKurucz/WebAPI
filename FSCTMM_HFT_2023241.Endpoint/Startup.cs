@@ -1,4 +1,8 @@
+using FSCTMM_HFT_2023241.Logic;
+using FSCTMM_HFT_2023241.Logic.Inetfaces;
+using FSCTMM_HFT_2023241.Models;
 using FSCTMM_HFT_2023241.Repository;
+using FSCTMM_HFT_2023241.Repository.ModelRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +25,14 @@ namespace FSCTMM_HFT_2023241.Endpoint
             //Ioc konténer modul 8 video 7
             services.AddTransient<AirplaneDbContext>();
 
+            services.AddTransient<Irepository<Airlpanes>, AirplaneRepository>();
+            services.AddTransient<Irepository<Crew>, CrewRepository>();
+            services.AddTransient<Irepository<Airports>, AirportRepository>();
+
+
+            services.AddTransient<IAirplaneLogic, AirplaneLogic>();
+            services.AddTransient<IAirportLogic, AirportLogic>();
+            services.AddTransient<ICrewLogic, CrewLogic>();
 
         }
 
@@ -36,10 +48,12 @@ namespace FSCTMM_HFT_2023241.Endpoint
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Hello World!");
+                //});
+
+                endpoints.MapControllers();
             });
         }
     }
