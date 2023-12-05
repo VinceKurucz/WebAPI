@@ -32,6 +32,7 @@ namespace FSCTMM_2023241.Test
         Mock<Irepository<Airports>> MockAirportRepo;
 
 
+        [SetUp]
         public void Initial()
         {
             MockAirplaneRepo = new Mock<Irepository<Airlpanes>>();
@@ -101,5 +102,99 @@ namespace FSCTMM_2023241.Test
             CrewLogic1 = new CrewLogic(MockCrewRepo.Object);
 
         }
+
+
+        
+
+
+        [Test]
+        public void CreateAirplane()
+        {
+            var plane = new Airlpanes();
+
+            plane.Capacity = 350 ;
+
+            AirplaneLogic1.Create(plane);
+
+            MockAirplaneRepo.Verify(c => c.Create(plane), Times.Once);          
+        }
+
+        [Test]
+        public void CreateTooSmallAirplane()
+        {
+            var plane = new Airlpanes();
+
+            plane.Capacity = 10;
+
+            try
+            {
+                AirplaneLogic1.Create(plane);
+            }
+            catch
+            {
+
+            }
+            MockAirplaneRepo.Verify(c => c.Create(plane), Times.Never);
+        }
+
+        [Test]
+        public void CreateCrew()
+        {
+            var crew = new Crew();
+
+            crew.NumberOfCrew = 10;
+
+            CrewLogic1.Create(crew);
+
+            MockCrewRepo.Verify(c => c.Create(crew), Times.Once);
+        }
+
+        [Test]
+        public void CreateTooSmallCrew()
+        {
+            var crew = new Crew();
+
+            crew.NumberOfCrew = 1;
+
+            try
+            {
+                CrewLogic1.Create(crew);
+            }
+            catch
+            {
+
+            }
+
+            MockCrewRepo.Verify(c => c.Create(crew), Times.Never);
+        }
+
+        [Test]
+        public void CreateAirporto()
+        {
+            var Airport = new Airports();
+
+            Airport.TakeOffPlatform = 5;
+
+            AirportLogic1.Create(Airport);
+
+            MockAirportRepo.Verify(c => c.Create(Airport), Times.Once);
+        }
+        [Test]
+        public void CreateTooSmallAirport()
+        {
+            var Airport = new Airports();
+
+            Airport.TakeOffPlatform = 0;
+
+            try
+            {
+                AirportLogic1.Create(Airport);
+            }
+            catch { 
+            }
+
+            MockAirportRepo.Verify(c => c.Create(Airport), Times.Never);
+        }
+
     }
 }
