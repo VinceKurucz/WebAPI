@@ -66,11 +66,32 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void Update<T>()
         {
+            Console.WriteLine("Enter the Id to update:  ");
+            int id = int.Parse(Console.ReadLine());
+            var instance = Rest.Get<T>(id, typeof(T).Name);
+            var properties = typeof(T).GetProperties().Where(p => p.GetAccessors().All(a => !a.IsVirtual) && p.Name != "id");
+            foreach (var property in properties)
+            {
+                Console.Write($"New: {property.Name} Old: {property.GetValue(instance)}=  ");
+                string input = Console.ReadLine();
+                if (property.PropertyType == typeof(int))
+                {
+                    property.SetValue(instance, int.Parse(input));
+                }
+                else if(property.PropertyType == typeof(string)) 
+                {
+                    property.SetValue(instance, input);
+                }
+            }
+            Rest.Put(instance, typeof(T).Name);
         }
 
         public void Delete<T>()
         {
+            Console.WriteLine("Enter the Id to delet: ");
+            int id = int.Parse(Console.ReadLine());
 
+            Rest.Delete(id, typeof(T).Name);
         }
 
 
