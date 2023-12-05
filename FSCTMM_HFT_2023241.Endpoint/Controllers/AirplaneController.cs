@@ -9,36 +9,36 @@ namespace FSCTMM_HFT_2023241.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AirportsController : ControllerBase
+    public class AirplaneController : ControllerBase
     {
-        IAirportLogic logic;
+        IAirplaneLogic logic;
 
-        public AirportsController(IAirportLogic logic)
+        public AirplaneController(IAirplaneLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Airports> ReadAll()
+        public IEnumerable<Airlpanes> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Airports Read(int id)
+        public Airlpanes Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Airports value)
+        public void Create([FromBody] Airlpanes value)
         {
             this.logic.Create(value);
         }
 
 
         [HttpPut]
-        public void Update([FromBody] Airports value)
+        public void Update([FromBody] Airlpanes value)
         {
             this.logic.Update(value);
         }
