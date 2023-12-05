@@ -88,7 +88,7 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void Delete<T>()
         {
-            Console.WriteLine("Enter the Id to delet: ");
+            Console.WriteLine("Enter the Id to delete: ");
             int id = int.Parse(Console.ReadLine());
 
             Rest.Delete(id, typeof(T).Name);
