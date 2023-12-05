@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FSCTMM_HFT_2023241.Logic
+namespace FSCTMM_HFT_2023241.Logic.classes
 {
     public class CrewLogic : ICrewLogic
     {
@@ -47,10 +47,10 @@ namespace FSCTMM_HFT_2023241.Logic
         }
 
         //gépek ahol crew > 8
-        public IEnumerable<Airlpanes> avgseats() 
+        public IEnumerable<Airlpanes> avgseats()
         {
-            var one = from Crew in repo.ReadAll() 
-                      where Crew.NumberOfCrew > 8  
+            var one = from Crew in repo.ReadAll()
+                      where Crew.NumberOfCrew > 8
                       select Crew.Airlpanes;
             return one;
         }
@@ -58,8 +58,8 @@ namespace FSCTMM_HFT_2023241.Logic
         //Crew ahhol a repülőgép sebessége nagyobb mint 
         public IEnumerable<Crew> CrewWithBigPlaneSpeed()
         {
-            var two = from Crew in repo.ReadAll() 
-                      where Crew.Airlpanes.Speed > 600 
+            var two = from Crew in repo.ReadAll()
+                      where Crew.Airlpanes.Speed > 600
                       select Crew;
             return two;
         }
@@ -67,17 +67,17 @@ namespace FSCTMM_HFT_2023241.Logic
         //Reoülőterek ahhol az ott megforduló gépeken lévő Crew értékelése "Good"
         public IEnumerable<Airports> AirportWithBestCrew()
         {
-            var three = from Crew in repo.ReadAll() 
-                        where Crew.Reputation == "Good" 
+            var three = from Crew in repo.ReadAll()
+                        where Crew.Reputation == "Good"
                         select Crew.Airlpanes.Airports;
             return three;
         }
 
         // A nagy és jó Crew-al rendelkező repűlőgépek repűlőterei
-        public IEnumerable<Airports> BigAndGoodPlanesAirports() 
-        { 
-            var four = from Crew in repo.ReadAll() 
-                       where Crew.Reputation == "Good" && Crew.Airlpanes.Capacity > 100 
+        public IEnumerable<Airports> BigAndGoodPlanesAirports()
+        {
+            var four = from Crew in repo.ReadAll()
+                       where Crew.Reputation == "Good" && Crew.Airlpanes.Capacity > 100
                        select Crew.Airlpanes.Airports;
             return four;
         }

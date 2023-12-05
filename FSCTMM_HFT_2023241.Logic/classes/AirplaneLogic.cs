@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FSCTMM_HFT_2023241.Logic
+namespace FSCTMM_HFT_2023241.Logic.classes
 {
-    public class AirportLogic : IAirportLogic
+    public class AirplaneLogic : IAirplaneLogic
     {
-        Irepository<Airports> repo;
+        Irepository<Airlpanes> repo;
 
-        public AirportLogic(Irepository<Airports> rep)
+        public AirplaneLogic(Irepository<Airlpanes> rep)
         {
             repo = rep;
         }
-        public void Create(Airports item)
+        public void Create(Airlpanes item)
         {
-            if (item.TakeOffPlatform == 0)
+            if (item.Capacity < 30)
             {
-                throw new ArgumentException("no platforms");
+                throw new ArgumentException("too few seats");
             }
             repo.Create(item);
         }
@@ -31,17 +31,17 @@ namespace FSCTMM_HFT_2023241.Logic
             repo.Delete(id);
         }
 
-        public Airports Read(int id)
+        public Airlpanes Read(int id)
         {
             return repo.Read(id);
         }
 
-        public IQueryable<Airports> ReadAll()
+        public IQueryable<Airlpanes> ReadAll()
         {
             return repo.ReadAll();
         }
 
-        public void Update(Airports item)
+        public void Update(Airlpanes item)
         {
             repo.Update(item);
         }
