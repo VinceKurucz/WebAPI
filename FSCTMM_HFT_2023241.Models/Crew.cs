@@ -19,6 +19,7 @@ namespace FSCTMM_HFT_2023241.Models
 
         public string Reputation { get; set; }
 
+        [ForeignKey("AirplaneId")]
         public int AirplaneId { get; set; }
 
 

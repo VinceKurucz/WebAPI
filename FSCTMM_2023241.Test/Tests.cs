@@ -8,6 +8,7 @@ using FSCTMM_HFT_2023241.Models;
 using FSCTMM_HFT_2023241.Logic.classes;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace FSCTMM_2023241.Test
 {
@@ -43,12 +44,12 @@ namespace FSCTMM_2023241.Test
 
             TestAirports1 = new Airports();
             TestAirports1.Id = 1;
-            TestAirports1.TakeOffPlatform = 2;
+            TestAirports1.TakeOffPlatform = 6;
             TestAirports1.Name = "Osaka";
 
             TestAirports2 = new Airports();
             TestAirports2.Id = 2;
-            TestAirports2.TakeOffPlatform = 4;
+            TestAirports2.TakeOffPlatform = 3;
             TestAirports2.Name = "Singapore";
 
 
@@ -57,7 +58,7 @@ namespace FSCTMM_2023241.Test
             TestAirlpanes1.Id = 1;
             TestAirlpanes1.AirportId = 1;
             TestAirlpanes1.Capacity = 150;
-            TestAirlpanes1.Speed = 600;
+            TestAirlpanes1.Speed = 700;
             TestAirlpanes1.Airports = TestAirports1;
 
             TestAirlpanes2 = new Airlpanes();
@@ -104,7 +105,64 @@ namespace FSCTMM_2023241.Test
         }
 
 
-        
+
+
+        [Test]
+        public void AvgSeatsTest()
+        {
+            //mivelhogy egy gyüjtemnénnyel tér vissza, a várt redmény egy tuajdonságát ellenőrizzük
+
+            var plane = CrewLogic1.avgseats();
+
+            Assert.That(plane, Has.Exactly(1).Property("Speed").EqualTo(700));
+        }
+
+
+        [Test]
+        public void CrewWithBigPlaneSpeed()
+        {
+            //melyik crew-nak van gyors gépe
+
+            var crew = CrewLogic1.CrewWithBigPlaneSpeed();
+
+           
+            Assert.That(crew, Has.Exactly(1).Property("NumberOfCrew").EqualTo(9));
+        }
+
+        [Test]
+        public void AirportWithBestCrew()
+        {
+            //a "Good" crew melyik repülőtérhez tartozik?
+
+            var crew = CrewLogic1.AirportWithBestCrew();
+
+            Assert.That(crew, Has.Exactly(1).Property("Name").EqualTo("Osaka"));
+        }
+
+
+        [Test]
+        public void BigAndGoodPlanesAirport()
+        {
+            // A nagy és jó Crew - al rendelkező repűlőgépek repűlőterei(osaka)
+
+            var airp = CrewLogic1.BigAndGoodPlanesAirports();
+   
+
+            Assert.That(airp, Has.Exactly(1).Property("Name").EqualTo("Osaka"));
+        }
+
+
+        [Test]
+
+        public void BigAirportsFastPlanes()
+        {
+            //A nagykapacitású repterek gyors repülőgépei
+
+            var airplane = CrewLogic1.BigAirportsFastPlanes();
+
+            Assert.That(airplane, Has.Exactly(1).Property("Capacity").EqualTo(150));
+        }
+
 
 
         [Test]

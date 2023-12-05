@@ -52,7 +52,7 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             var one = from Crew in repo.ReadAll()
                       where Crew.NumberOfCrew > 8
                       select Crew.Airlpanes;
-            return one;
+            return one.Distinct();
         }
 
         //Crew ahhol a repülőgép sebessége nagyobb mint 
@@ -61,7 +61,7 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             var two = from Crew in repo.ReadAll()
                       where Crew.Airlpanes.Speed > 600
                       select Crew;
-            return two;
+            return two.Distinct().Distinct();
         }
 
         //Reoülőterek ahhol az ott megforduló gépeken lévő Crew értékelése "Good"
@@ -70,7 +70,7 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             var three = from Crew in repo.ReadAll()
                         where Crew.Reputation == "Good"
                         select Crew.Airlpanes.Airports;
-            return three;
+            return three.Distinct();
         }
 
         // A nagy és jó Crew-al rendelkező repűlőgépek repűlőterei
@@ -79,7 +79,7 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             var four = from Crew in repo.ReadAll()
                        where Crew.Reputation == "Good" && Crew.Airlpanes.Capacity > 100
                        select Crew.Airlpanes.Airports;
-            return four;
+            return four.Distinct();
         }
 
         //A nagykapacitású repterek gyors repülőgépei
@@ -88,7 +88,7 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             var five = from Crew in repo.ReadAll()
                        where Crew.Airlpanes.Speed > 600 && Crew.Airlpanes.Airports.TakeOffPlatform > 1
                        select Crew.Airlpanes;
-            return five;
+            return five.Distinct();
         }
     }
 }

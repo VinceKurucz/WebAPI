@@ -32,21 +32,37 @@ namespace FSCTMM_HFT_2023241.Repository
             //Airptort=>Airplane=>Crew 
 
 
+            modelBuilder.Entity<Airlpanes>()
+                .HasOne(a => a.Airports)
+                .WithMany(airports => airports.Airlpanes)
+                .HasForeignKey(a => a.AirportId);
 
-            //Airplane->Airport kapcsolat
-            modelBuilder.Entity<Airlpanes>(entity => entity
-                .HasOne(t => t.Airports)
-                .WithMany(z => z.Airlpanes)
-                .HasForeignKey(c => c.AirportId)
-            );
+            modelBuilder.Entity<Airlpanes>()
+                .HasMany(a => a.Crew)
+                .WithOne(crew => crew.Airlpanes)
+                .HasForeignKey(crew => crew.AirplaneId);
+
+            modelBuilder.Entity<Airports>()
+                .HasMany(airports => airports.Airlpanes)
+                .WithOne(airplane => airplane.Airports)
+                .HasForeignKey(airplane => airplane.AirportId);
 
 
-            //crew->Airplane kapcsolat
-            modelBuilder.Entity<Crew>(entity => entity
-                .HasOne(t => t.Airlpanes)
-                .WithMany(z => z.Crew)
-                .HasForeignKey(c => c.AirplaneId)
-            );
+
+            ////Airplane->Airport kapcsolat
+            //modelBuilder.Entity<Airlpanes>(entity => entity
+            //    .HasOne(t => t.Airports)
+            //    .WithMany(z => z.Airlpanes)
+            //    .HasForeignKey(c => c.AirportId)
+            //);
+
+
+            ////crew->Airplane kapcsolat
+            //modelBuilder.Entity<Crew>(entity => entity
+            //    .HasOne(t => t.Airlpanes)
+            //    .WithMany(z => z.Crew)
+            //    .HasForeignKey(c => c.AirplaneId)
+            //);
 
 
 
