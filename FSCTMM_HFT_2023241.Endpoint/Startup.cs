@@ -1,3 +1,4 @@
+using Castle.Core.Configuration;
 using FSCTMM_HFT_2023241.Logic.classes;
 using FSCTMM_HFT_2023241.Logic.Inetfaces;
 using FSCTMM_HFT_2023241.Models;
@@ -19,6 +20,15 @@ namespace FSCTMM_HFT_2023241.Endpoint
 {
     public class Startup
     {
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -38,7 +48,9 @@ namespace FSCTMM_HFT_2023241.Endpoint
 
             services.AddControllers();
 
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" }); });
+            services.AddSwaggerGen(c => 
+            { c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" });
+            });
 
         }
 
@@ -49,11 +61,13 @@ namespace FSCTMM_HFT_2023241.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Endpoint v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FSCTMM_HFT_2023241.Endpoint v1"));
             }
 
-            app.UseExceptionHandler(c => c.Run(async context => { var exception = context.Features.Get<IExceptionHandlerPathFeature>().Error; var response = new { Msg = exception.Message }; await context.Response.WriteAsJsonAsync(response); }));
+            app.UseExceptionHandler(c =>    
+            c.Run(async context => { var exception = context.Features.Get<IExceptionHandlerPathFeature>().Error; var response = new { Msg = exception.Message }; await context.Response.WriteAsJsonAsync(response); }));
             app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>

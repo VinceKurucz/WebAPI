@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using FSCTMM_HFT_2023241.Repository;
+﻿using System;
 using System.Linq;
+using System.Net;
 
 namespace FSCTMM_HFT_2023241.Client
 {
@@ -9,12 +8,10 @@ namespace FSCTMM_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            AirplaneDbContext db = new AirplaneDbContext();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true; //Ezt az SSL exceptionok miatt
 
-            //teszt
-            var egy = db.Airport.Select(t => t.TakeOffPlatform);
 
-            ;
+            RestService rest = new RestService("http://localhost:18364/", "name");
 
         }
     }
