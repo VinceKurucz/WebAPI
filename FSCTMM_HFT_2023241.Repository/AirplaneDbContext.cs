@@ -29,7 +29,7 @@ namespace FSCTMM_HFT_2023241.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Airptort=>Airplane=>Crew 
+
 
 
             modelBuilder.Entity<Airlpanes>()

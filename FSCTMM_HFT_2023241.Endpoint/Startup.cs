@@ -1,4 +1,3 @@
-using Castle.Core.Configuration;
 using FSCTMM_HFT_2023241.Logic.classes;
 using FSCTMM_HFT_2023241.Logic.Inetfaces;
 using FSCTMM_HFT_2023241.Models;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
@@ -21,12 +21,12 @@ namespace FSCTMM_HFT_2023241.Endpoint
     public class Startup
     {
 
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-        //public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -34,22 +34,25 @@ namespace FSCTMM_HFT_2023241.Endpoint
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //Ioc konténer modul 8 video 7
-            services.AddTransient<AirplaneDbContext>();
 
-            services.AddTransient<Irepository<Airlpanes>, AirplaneRepository>();
+            services.AddSingleton<AirplaneDbContext>();
+
             services.AddTransient<Irepository<Crew>, CrewRepository>();
+            services.AddTransient<Irepository<Airlpanes>, AirplaneRepository>();         
             services.AddTransient<Irepository<Airports>, AirportRepository>();
 
-
+            services.AddTransient<ICrewLogic, CrewLogic>();
             services.AddTransient<IAirplaneLogic, AirplaneLogic>();
             services.AddTransient<IAirportLogic, AirportLogic>();
-            services.AddTransient<ICrewLogic, CrewLogic>();
+          
+
+            //services.AddControllersWithViews();
 
             services.AddControllers();
 
             services.AddSwaggerGen(c => 
-            { c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" });
+            { c.SwaggerDoc("v1", new OpenApiInfo 
+            {  Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" });
             });
 
         }

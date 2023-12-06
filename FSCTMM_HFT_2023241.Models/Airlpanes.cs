@@ -26,6 +26,7 @@ namespace FSCTMM_HFT_2023241.Models
         [NotMapped]
         public virtual Airports Airports { get; set; }
 
+        
 
         [NotMapped]
         public virtual ICollection<Crew> Crew { get; set; }

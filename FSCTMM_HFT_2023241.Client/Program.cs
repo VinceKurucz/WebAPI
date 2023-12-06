@@ -22,6 +22,8 @@ namespace FSCTMM_HFT_2023241.Client
 
 
 
+
+
             var AirplanesMenu = new ConsoleMenu(args, level: 1)
                .Add("List", () => crud.List<Airlpanes>())
                .Add("Create", () => crud.Create<Airlpanes>())
