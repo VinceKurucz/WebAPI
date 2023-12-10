@@ -35,24 +35,25 @@ namespace FSCTMM_HFT_2023241.Endpoint
         {
 
 
-            services.AddSingleton<AirplaneDbContext>();
+            services.AddTransient<AirplaneDbContext>();
 
-            services.AddTransient<Irepository<Crew>, CrewRepository>();
-            services.AddTransient<Irepository<Airlpanes>, AirplaneRepository>();         
+            services.AddTransient<Irepository<Airplanes>, AirplaneRepository>();
             services.AddTransient<Irepository<Airports>, AirportRepository>();
+            services.AddTransient<Irepository<Crew>, CrewRepository>();
+                   
+     
 
-            services.AddTransient<ICrewLogic, CrewLogic>();
+          
             services.AddTransient<IAirplaneLogic, AirplaneLogic>();
             services.AddTransient<IAirportLogic, AirportLogic>();
-          
+            services.AddTransient<ICrewLogic, CrewLogic>();
 
             //services.AddControllersWithViews();
 
             services.AddControllers();
-
-            services.AddSwaggerGen(c => 
-            { c.SwaggerDoc("v1", new OpenApiInfo 
-            {  Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSCTMM_HFT_2023241.Endpoint", Version = "v1" });
             });
 
         }
@@ -66,20 +67,18 @@ namespace FSCTMM_HFT_2023241.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FSCTMM_HFT_2023241.Endpoint v1"));
             }
-
-            app.UseExceptionHandler(c =>    
-            c.Run(async context => { var exception = context.Features.Get<IExceptionHandlerPathFeature>().Error; var response = new { Msg = exception.Message }; await context.Response.WriteAsJsonAsync(response); }));
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features.Get<IExceptionHandlerPathFeature>().Error;
+                var response = new { error = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello World!");
-                //});
-
                 endpoints.MapControllers();
             });
         }

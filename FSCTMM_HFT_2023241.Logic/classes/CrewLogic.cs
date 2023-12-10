@@ -47,48 +47,48 @@ namespace FSCTMM_HFT_2023241.Logic.classes
         }
 
         //gépek ahol crew > 8
-        public IEnumerable<Airlpanes> avgseats()
-        {
-            var one = from Crew in repo.ReadAll()
-                      where Crew.NumberOfCrew > 8
-                      select Crew.Airlpanes;
-            return one.Distinct();
-        }
+        //public IEnumerable<Airplanes> avgseats()
+        //{
+        //    var one = from Crew in repo.ReadAll()
+        //              where Crew.NumberOfCrew > 8
+        //              select Crew.Airlpanes;
+        //    return one.Distinct();
+        //}
 
-        //Crew ahhol a repülőgép sebessége nagyobb mint 
-        public IEnumerable<Crew> CrewWithBigPlaneSpeed()
-        {
-            var two = from Crew in repo.ReadAll()
-                      where Crew.Airlpanes.Speed > 600
-                      select Crew;
-            return two.Distinct().Distinct();
-        }
+        ////Crew ahhol a repülőgép sebessége nagyobb mint 
+        //public IEnumerable<Crew> CrewWithBigPlaneSpeed()
+        //{
+        //    var two = from Crew in repo.ReadAll()
+        //              where Crew.Airlpanes.Speed > 600
+        //              select Crew;
+        //    return two.Distinct().Distinct();
+        //}
 
-        //Reoülőterek ahhol az ott megforduló gépeken lévő Crew értékelése "Good"
-        public IEnumerable<Airports> AirportWithBestCrew()
-        {
-            var three = from Crew in repo.ReadAll()
-                        where Crew.Reputation == "Good"
-                        select Crew.Airlpanes.Airports;
-            return three.Distinct();
-        }
+        ////Reoülőterek ahhol az ott megforduló gépeken lévő Crew értékelése "Good"
+        //public IEnumerable<Airports> AirportWithBestCrew()
+        //{
+        //    var three = from Crew in repo.ReadAll()
+        //                where Crew.Reputation == "Good"
+        //                select Crew.Airlpanes.Airports;
+        //    return three.Distinct();
+        //}
 
-        // A nagy és jó Crew-al rendelkező repűlőgépek repűlőterei
-        public IEnumerable<Airports> BigAndGoodPlanesAirports()
-        {
-            var four = from Crew in repo.ReadAll()
-                       where Crew.Reputation == "Good" && Crew.Airlpanes.Capacity > 100
-                       select Crew.Airlpanes.Airports;
-            return four.Distinct();
-        }
+        //// A nagy és jó Crew-al rendelkező repűlőgépek repűlőterei
+        //public IEnumerable<Airports> BigAndGoodPlanesAirports()
+        //{
+        //    var four = from Crew in repo.ReadAll()
+        //               where Crew.Reputation == "Good" && Crew.Airlpanes.Capacity > 100
+        //               select Crew.Airlpanes.Airports;
+        //    return four.Distinct();
+        //}
 
-        //A nagykapacitású repterek gyors repülőgépei
-        public IEnumerable<Airlpanes> BigAirportsFastPlanes()
-        {
-            var five = from Crew in repo.ReadAll()
-                       where Crew.Airlpanes.Speed > 600 && Crew.Airlpanes.Airports.TakeOffPlatform > 1
-                       select Crew.Airlpanes;
-            return five.Distinct();
-        }
+        ////A nagykapacitású repterek gyors repülőgépei
+        //public IEnumerable<Airplanes> BigAirportsFastPlanes()
+        //{
+        //    var five = from Crew in repo.ReadAll()
+        //               where Crew.Airlpanes.Speed > 600 && Crew.Airlpanes.Airports.TakeOffPlatform > 1
+        //               select Crew.Airlpanes;
+        //    return five.Distinct();
+        //}
     }
 }

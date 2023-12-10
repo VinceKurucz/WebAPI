@@ -11,13 +11,13 @@ namespace FSCTMM_HFT_2023241.Logic.classes
 {
     public class AirplaneLogic : IAirplaneLogic
     {
-        Irepository<Airlpanes> repo;
+        Irepository<Airplanes> repo;
 
-        public AirplaneLogic(Irepository<Airlpanes> rep)
+        public AirplaneLogic(Irepository<Airplanes> rep)
         {
             repo = rep;
         }
-        public void Create(Airlpanes item)
+        public void Create(Airplanes item)
         {
             if (item.Capacity < 30)
             {
@@ -31,17 +31,17 @@ namespace FSCTMM_HFT_2023241.Logic.classes
             repo.Delete(id);
         }
 
-        public Airlpanes Read(int id)
+        public Airplanes Read(int id)
         {
             return repo.Read(id);
         }
 
-        public IQueryable<Airlpanes> ReadAll()
+        public IQueryable<Airplanes> ReadAll()
         {
             return repo.ReadAll();
         }
 
-        public void Update(Airlpanes item)
+        public void Update(Airplanes item)
         {
             repo.Update(item);
         }

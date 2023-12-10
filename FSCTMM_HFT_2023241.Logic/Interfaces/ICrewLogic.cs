@@ -16,11 +16,11 @@ namespace FSCTMM_HFT_2023241.Logic.Inetfaces
         void Update(Crew item);
 
 
-        public IEnumerable<Airlpanes> avgseats();
-        public IEnumerable<Crew> CrewWithBigPlaneSpeed();
-        public IEnumerable<Airports> AirportWithBestCrew();
-        public IEnumerable<Airports> BigAndGoodPlanesAirports();
-        public IEnumerable<Airlpanes> BigAirportsFastPlanes();
+        //public IEnumerable<Airplanes> avgseats();
+        //public IEnumerable<Crew> CrewWithBigPlaneSpeed();
+        //public IEnumerable<Airports> AirportWithBestCrew();
+        //public IEnumerable<Airports> BigAndGoodPlanesAirports();
+        //public IEnumerable<Airplanes> BigAirportsFastPlanes();
 
 
 

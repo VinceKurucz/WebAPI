@@ -11,7 +11,7 @@ namespace FSCTMM_HFT_2023241.Repository
 {
     public class AirplaneDbContext : DbContext
     {
-       public DbSet<Airlpanes> planes { get; set;}
+       public DbSet<Airplanes> planes { get; set;}
        public DbSet<Crew> crew { get; set; }
        public DbSet<Airports> Airport { get; set; }
 
@@ -32,37 +32,33 @@ namespace FSCTMM_HFT_2023241.Repository
 
 
 
-            modelBuilder.Entity<Airlpanes>()
-                .HasOne(a => a.Airports)
-                .WithMany(airports => airports.Airlpanes)
-                .HasForeignKey(a => a.AirportId);
+            //modelBuilder.Entity<Airplanes>()
+            //    .HasOne(a => a.Airports)
+            //    .WithMany(airports => airports.Airlpanes)
+            //    .HasForeignKey(a => a.AirportId);
 
-            modelBuilder.Entity<Airlpanes>()
-                .HasMany(a => a.Crew)
-                .WithOne(crew => crew.Airlpanes)
-                .HasForeignKey(crew => crew.AirplaneId);
+            //modelBuilder.Entity<Airplanes>()
+            //    .HasMany(a => a.Crew)
+            //    .WithOne(crew => crew.Airlpanes)
+            //    .HasForeignKey(crew => crew.AirplaneId);
 
-            modelBuilder.Entity<Airports>()
-                .HasMany(airports => airports.Airlpanes)
-                .WithOne(airplane => airplane.Airports)
-                .HasForeignKey(airplane => airplane.AirportId);
-
-
-
-            ////Airplane->Airport kapcsolat
-            //modelBuilder.Entity<Airlpanes>(entity => entity
-            //    .HasOne(t => t.Airports)
-            //    .WithMany(z => z.Airlpanes)
-            //    .HasForeignKey(c => c.AirportId)
-            //);
+            //modelBuilder.Entity<Airports>()
+            //    .HasMany(airports => airports.Airlpanes)
+            //    .WithOne(airplane => airplane.Airports)
+            //    .HasForeignKey(airplane => airplane.AirportId);
 
 
-            ////crew->Airplane kapcsolat
-            //modelBuilder.Entity<Crew>(entity => entity
-            //    .HasOne(t => t.Airlpanes)
-            //    .WithMany(z => z.Crew)
-            //    .HasForeignKey(c => c.AirplaneId)
-            //);
+
+            modelBuilder.Entity<Crew>()
+                .HasOne(x => x.Airplanes)
+                .WithMany(x => x.Crews)
+                .HasForeignKey(x => x.AirplaneId);
+
+            modelBuilder.Entity<Crew>()
+                .HasOne(x => x.Airports)
+                .WithMany(x => x.Crews)
+                .HasForeignKey(x => x.AirportId);
+
 
 
 
@@ -73,21 +69,21 @@ namespace FSCTMM_HFT_2023241.Repository
                     new Airports() { Id = 3, Name ="Qatar Doha", TakeOffPlatform = 2},
                 }
             );
-            modelBuilder.Entity<Airlpanes>().HasData(new Airlpanes[]
+            modelBuilder.Entity<Airplanes>().HasData(new Airplanes[]
                 {
-                    new Airlpanes() { Id = 1, Capacity = 150, AirportId = 2, Speed = 540},
-                    new Airlpanes() { Id = 2, Capacity = 10, AirportId = 1, Speed = 630},
-                    new Airlpanes() { Id = 3, Capacity = 300, AirportId = 3, Speed = 610},
-                    new Airlpanes() { Id = 4, Capacity = 170, AirportId = 2, Speed = 680},
+                    new Airplanes() { Id = 1, Capacity = 150, AirportId = 2, Speed = 540},
+                    new Airplanes() { Id = 2, Capacity = 10, AirportId = 1, Speed = 630},
+                    new Airplanes() { Id = 3, Capacity = 300, AirportId = 3, Speed = 610},
+                    new Airplanes() { Id = 4, Capacity = 170, AirportId = 2, Speed = 680,}
                  }
             );  
             
             modelBuilder.Entity<Crew>().HasData(new Crew[]
                 {
-                    new Crew(){Id = 1, NumberOfCrew = 8, Reputation = "Good", AirplaneId = 1 },
-                    new Crew(){Id = 2, NumberOfCrew = 7, Reputation = "Bad", AirplaneId = 2 },
-                    new Crew(){Id = 3, NumberOfCrew = 9, Reputation = "Good", AirplaneId = 3 },
-                    new Crew(){Id = 4, NumberOfCrew = 8, Reputation = "Good", AirplaneId = 4 },
+                    new Crew(){Id = 1, NumberOfCrew = 8, Reputation = "Good", AirplaneId = 1, AirportId = 1 },
+                    new Crew(){Id = 2, NumberOfCrew = 7, Reputation = "Bad", AirplaneId = 2, AirportId = 3 },
+                    new Crew(){Id = 3, NumberOfCrew = 9, Reputation = "Good", AirplaneId = 3, AirportId = 2 },
+                    new Crew(){Id = 4, NumberOfCrew = 8, Reputation = "Good", AirplaneId = 4, AirportId = 2}
                  }
             );
 

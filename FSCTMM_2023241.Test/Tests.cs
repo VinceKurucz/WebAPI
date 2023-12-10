@@ -16,10 +16,10 @@ namespace FSCTMM_2023241.Test
     [TestFixture]
     public class Tests
     {
-        Airlpanes TestAirlpanes1;
-        Airlpanes TestAirlpanes2;
+        Airplanes TestAirlpanes1;
+        Airplanes TestAirlpanes2;
         AirplaneLogic AirplaneLogic1;
-        Mock<Irepository<Airlpanes>> MockAirplaneRepo;
+        Mock<Irepository<Airplanes>> MockAirplaneRepo;
 
         Crew TestCrew1;
         Crew TestCrew2;
@@ -36,7 +36,7 @@ namespace FSCTMM_2023241.Test
         [SetUp]
         public void Initial()
         {
-            MockAirplaneRepo = new Mock<Irepository<Airlpanes>>();
+            MockAirplaneRepo = new Mock<Irepository<Airplanes>>();
             MockCrewRepo = new Mock<Irepository<Crew>> ();
             MockAirportRepo = new Mock<Irepository<Airports>>();
 
@@ -54,14 +54,14 @@ namespace FSCTMM_2023241.Test
 
 
 
-            TestAirlpanes1 = new Airlpanes();
+            TestAirlpanes1 = new Airplanes();
             TestAirlpanes1.Id = 1;
             TestAirlpanes1.AirportId = 1;
             TestAirlpanes1.Capacity = 150;
             TestAirlpanes1.Speed = 700;
             TestAirlpanes1.Airports = TestAirports1;
 
-            TestAirlpanes2 = new Airlpanes();
+            TestAirlpanes2 = new Airplanes();
             TestAirlpanes2.Id = 2;
             TestAirlpanes2.AirportId = 2;
             TestAirlpanes2.Capacity = 120;
@@ -85,7 +85,7 @@ namespace FSCTMM_2023241.Test
 
 
 
-            var Airplanes = new List<Airlpanes>() { TestAirlpanes1, TestAirlpanes2 }.AsQueryable();
+            var Airplanes = new List<Airplanes>() { TestAirlpanes1, TestAirlpanes2 }.AsQueryable();
            
             MockAirplaneRepo.Setup(k => k.ReadAll()).Returns(Airplanes);
             AirplaneLogic1 = new AirplaneLogic(MockAirplaneRepo.Object);
@@ -168,7 +168,7 @@ namespace FSCTMM_2023241.Test
         [Test]
         public void CreateAirplane()
         {
-            var plane = new Airlpanes();
+            var plane = new Airplanes();
 
             plane.Capacity = 350 ;
 
@@ -180,7 +180,7 @@ namespace FSCTMM_2023241.Test
         [Test]
         public void CreateTooSmallAirplane()
         {
-            var plane = new Airlpanes();
+            var plane = new Airplanes();
 
             plane.Capacity = 10;
 
