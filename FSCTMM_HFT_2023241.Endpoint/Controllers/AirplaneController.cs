@@ -19,26 +19,26 @@ namespace FSCTMM_HFT_2023241.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Airplanes> ReadAll()
+        public IEnumerable<Airplane> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Airplanes Read(int id)
+        public Airplane Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Airplanes value)
+        public void Create([FromBody] Airplane value)
         {
             this.logic.Create(value);
         }
 
 
         [HttpPut]
-        public void Update([FromBody] Airplanes value)
+        public void Update([FromBody] Airplane value)
         {
             this.logic.Update(value);
         }

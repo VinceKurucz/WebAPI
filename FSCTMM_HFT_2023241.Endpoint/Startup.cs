@@ -37,7 +37,7 @@ namespace FSCTMM_HFT_2023241.Endpoint
 
             services.AddTransient<AirplaneDbContext>();
 
-            services.AddTransient<Irepository<Airplanes>, AirplaneRepository>();
+            services.AddTransient<Irepository<Airplane>, AirplaneRepository>();
             services.AddTransient<Irepository<Airports>, AirportRepository>();
             services.AddTransient<Irepository<Crew>, CrewRepository>();
                    

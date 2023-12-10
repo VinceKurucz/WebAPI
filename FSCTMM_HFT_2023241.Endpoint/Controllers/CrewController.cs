@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace FSCTMM_HFT_2023241.Endpoint.Controllers
 {
-    [Route("[controller]/Action")]
+    [Route("[controller]")]
     [ApiController]
     public class CrewController : ControllerBase
     {

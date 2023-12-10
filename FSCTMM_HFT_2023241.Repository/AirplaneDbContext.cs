@@ -11,7 +11,7 @@ namespace FSCTMM_HFT_2023241.Repository
 {
     public class AirplaneDbContext : DbContext
     {
-       public DbSet<Airplanes> planes { get; set;}
+       public DbSet<Airplane> planes { get; set;}
        public DbSet<Crew> crew { get; set; }
        public DbSet<Airports> Airport { get; set; }
 
@@ -69,12 +69,12 @@ namespace FSCTMM_HFT_2023241.Repository
                     new Airports() { Id = 3, Name ="Qatar Doha", TakeOffPlatform = 2},
                 }
             );
-            modelBuilder.Entity<Airplanes>().HasData(new Airplanes[]
+            modelBuilder.Entity<Airplane>().HasData(new Airplane[]
                 {
-                    new Airplanes() { Id = 1, Capacity = 150, AirportId = 2, Speed = 540},
-                    new Airplanes() { Id = 2, Capacity = 10, AirportId = 1, Speed = 630},
-                    new Airplanes() { Id = 3, Capacity = 300, AirportId = 3, Speed = 610},
-                    new Airplanes() { Id = 4, Capacity = 170, AirportId = 2, Speed = 680,}
+                    new Airplane() { Id = 1, Capacity = 150, AirportId = 2, Speed = 540},
+                    new Airplane() { Id = 2, Capacity = 10, AirportId = 1, Speed = 630},
+                    new Airplane() { Id = 3, Capacity = 300, AirportId = 3, Speed = 610},
+                    new Airplane() { Id = 4, Capacity = 170, AirportId = 2, Speed = 680,}
                  }
             );  
             

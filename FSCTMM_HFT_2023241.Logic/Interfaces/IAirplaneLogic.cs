@@ -9,11 +9,11 @@ namespace FSCTMM_HFT_2023241.Logic.Inetfaces
 {
     public interface IAirplaneLogic
     {
-        void Create(Airplanes item);
+        void Create(Airplane item);
         void Delete(int id);
-        Airplanes Read(int id);
-        IQueryable<Airplanes> ReadAll();
-        void Update(Airplanes item);
+        Airplane Read(int id);
+        IQueryable<Airplane> ReadAll();
+        void Update(Airplane item);
     }
 }
 

@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Models
 {
-    public class Airplanes
+    public class Airplane
     {
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         public int Capacity { get; set; }
 
         public int AirportId { get; set; }
@@ -27,9 +28,9 @@ namespace FSCTMM_HFT_2023241.Models
         public virtual ICollection<Crew> Crews { get; set; }
 
 
-        public Airplanes()
+        public Airplane()
         {
-
+            Crews = new HashSet<Crew>();
         }
 
     }

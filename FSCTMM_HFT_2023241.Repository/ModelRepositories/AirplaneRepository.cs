@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 {
-    public class AirplaneRepository : Repository<Airplanes>, Irepository<Airplanes>
+    public class AirplaneRepository : Repository<Airplane>, Irepository<Airplane>
     {
 
         public AirplaneRepository(AirplaneDbContext ctx) : base(ctx)
         {
         }
 
-        public override Airplanes Read(int id)
+        public override Airplane Read(int id)
         {
             return ctx.planes.FirstOrDefault(x => x.Id == id);
         }
 
 
-        public override void Update(Airplanes entity)
+        public override void Update(Airplane entity)
         {
 
             var old = Read(entity.Id);

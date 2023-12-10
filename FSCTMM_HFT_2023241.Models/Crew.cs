@@ -18,7 +18,7 @@ namespace FSCTMM_HFT_2023241.Models
 
         public int Id { get; set; }
 
-
+        [Required]
         [StringLength(120)]
         public string Reputation { get; set; }
 
@@ -28,7 +28,7 @@ namespace FSCTMM_HFT_2023241.Models
 
         [JsonIgnore]
         [NotMapped]
-        public virtual Airplanes Airplanes { get; set; }
+        public virtual Airplane Airplanes { get; set; }
         [JsonIgnore]
         [NotMapped]
 
@@ -41,7 +41,7 @@ namespace FSCTMM_HFT_2023241.Models
 
         public Crew()
         {
-
+            
         }
     }
 }

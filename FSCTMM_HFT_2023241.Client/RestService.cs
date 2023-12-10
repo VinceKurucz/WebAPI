@@ -60,6 +60,7 @@ namespace FSCTMM_HFT_2023241.Client
             {
                 List<T> items = new List<T>();
                 HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
+           
                 if (response.IsSuccessStatusCode)
                 {
                     items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();

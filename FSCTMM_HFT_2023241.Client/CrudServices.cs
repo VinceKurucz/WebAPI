@@ -45,8 +45,9 @@ namespace FSCTMM_HFT_2023241.Client
         public void List<T>()
         {
             var properties = typeof(T).GetProperties().Where(p => p.GetAccessors().All(a => !a.IsVirtual));
+            
             var items = Rest.Get<T>(typeof(T).Name);
-
+            
             foreach (var property in properties)
             {
                 Console.Write($"{property.Name}\t");
@@ -84,6 +85,7 @@ namespace FSCTMM_HFT_2023241.Client
                 }
             }
             Rest.Put(instance, typeof(T).Name);
+         
         }
 
         public void Delete<T>()

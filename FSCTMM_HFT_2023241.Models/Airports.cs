@@ -20,15 +20,18 @@ namespace FSCTMM_HFT_2023241.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
-        [JsonIgnore]
-        [NotMapped]
+
 
         public int TakeOffPlatform { get; set; }
+
+
+        [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Crew> Crews { get; set; }
 
         public Airports()
         {
-
+            Crews = new HashSet<Crew>();
         }
 
     }

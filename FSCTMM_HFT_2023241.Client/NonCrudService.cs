@@ -17,7 +17,7 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void avgseats()
         {
-            var items = rest.Get<Airplanes>("Stat/avgseats");
+            var items = rest.Get<Airplane>("Stat/avgseats");
             foreach (var item in items)
             {
                 Console.WriteLine(item);
@@ -58,7 +58,7 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void BigAirportsFastPlanes()
         {
-            var items = rest.Get<Airplanes>("Stat/BigAirportsFastPlanes");
+            var items = rest.Get<Airplane>("Stat/BigAirportsFastPlanes");
             foreach (var item in items)
             {
                 Console.WriteLine(item);

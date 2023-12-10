@@ -12,7 +12,8 @@ namespace FSCTMM_HFT_2023241.Client
         {
 
 
-            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true; //Ezt az SSL exceptionok miatt
+           // ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true; //Ezt az SSL exceptionok miatt
+
 
 
             RestService rest = new RestService("http://localhost:18364/");
@@ -25,12 +26,12 @@ namespace FSCTMM_HFT_2023241.Client
 
 
             var AirplanesMenu = new ConsoleMenu(args, level: 1)
-               .Add("List", () => crud.List<Airplanes>())
-               .Add("Create", () => crud.Create<Airplanes>())
-               .Add("Update", () => crud.Update<Airplanes>())
-               .Add("Delete", () => crud.Delete<Airplanes>())
+               .Add("List", () => crud.List<Airplane>())
+               .Add("Create", () => crud.Create<Airplane>())
+               .Add("Update", () => crud.Update<Airplane>())
+               .Add("Delete", () => crud.Delete<Airplane>())
                .Add("Exit", ConsoleMenu.Close);
-
+          
             var CrewMenu = new ConsoleMenu(args, level: 1)
                .Add("List", () => crud.List<Crew>())
                .Add("Create", () => crud.Create<Crew>())
