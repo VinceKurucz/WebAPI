@@ -15,42 +15,42 @@ namespace FSCTMM_HFT_2023241.Client
             this.rest = rest;
         }
 
-        public void avgseats()
+        public void BigCrewPlanes()
         {
-            var items = rest.Get<Airplane>("Stat/avgseats");
+            var items = rest.Get<Airplane>("Custom/BigCrewPlanes");
             foreach (var item in items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Repülő aminek nagy a személyzete: "+item.Id);
             }
             Console.ReadLine();
         }
 
         public void CrewWithBigPlaneSpeed()
         {
-            var items = rest.Get<Crew>("Stat/CrewWithBigPlaneSpeed");
+            var items = rest.Get<Crew>("Custom/CrewWithBigPlaneSpeed");
             foreach (var item in items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Személyzet aminek gyors a repülője: "+item.Id);
             }
             Console.ReadLine();
         }
 
         public void AirportWithBestCrew()
         {
-            var items = rest.Get<Airports>("Stat/AirportWithBestCrew");
+            var items = rest.Get<Airports>("Custom/AirportWithBestCrew");
             foreach (var item in items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Reülőtér ahol jó a személyzet: "+item.Name);
             }
             Console.ReadLine();
         }
 
         public void BigAndGoodPlanesAirports()
         {
-            var items = rest.Get<Airports>("Stat/BigAndGoodPlanesAirports");
+            var items = rest.Get<Airports>("Custom/BigAndGoodPlanesAirports");
             foreach (var item in items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Reülőtér ahol jó a személyzet és a repülők nagyok: " + item.Name);
             }
             Console.ReadLine();
         }
@@ -58,10 +58,10 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void BigAirportsFastPlanes()
         {
-            var items = rest.Get<Airplane>("Stat/BigAirportsFastPlanes");
+            var items = rest.Get<Airplane>("Custom/BigAirportsFastPlanes");
             foreach (var item in items)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Nagy kapacitásű, gyors repülőgépek: : "+item.Id);
             }
             Console.ReadLine();
         }

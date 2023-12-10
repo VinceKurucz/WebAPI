@@ -47,7 +47,7 @@ namespace FSCTMM_HFT_2023241.Client
                .Add("Exit", ConsoleMenu.Close);
 
             var StatsSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("Averege seats", () => nonCrud.avgseats())
+                .Add("Averege seats", () => nonCrud.BigCrewPlanes())
                 .Add("CrewWithBigPlaneSpeed", () => nonCrud.CrewWithBigPlaneSpeed())
                 .Add("AirportWithBestCrew", () => nonCrud.AirportWithBestCrew())
                 .Add("BigAndGoodPlanesAirports", () => nonCrud.BigAndGoodPlanesAirports())

@@ -49,37 +49,5 @@ namespace FSCTMM_HFT_2023241.Endpoint.Controllers
             this.logic.Delete(id);
         }
 
-
-        //[HttpGet]
-        //public IEnumerable<Airports> AirportWithBestCrew()
-        //{
-        //    return logic.AirportWithBestCrew();
-        //}
-
-
-        //[HttpGet]
-        //public IEnumerable<Crew> CrewWithBigPlaneSpeed()
-        //{
-        //    return logic.CrewWithBigPlaneSpeed();
-        //}
-
-        //[HttpGet]
-        //public IEnumerable<Airplanes> avgseats()
-        //{
-        //    return logic.avgseats();
-        //}
-
-        //[HttpGet]
-        //public IEnumerable<Airports> BigAndGoodPlanesAirports()
-        //{
-        //    return logic.BigAndGoodPlanesAirports();
-        //}
-
-        //[HttpGet]
-        //public IEnumerable<Airplanes> BigAirportsFastPlanes()
-        //{
-        //    return logic.BigAirportsFastPlanes();
-        //}
-
     }
 }
