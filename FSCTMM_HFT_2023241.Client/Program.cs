@@ -16,11 +16,12 @@ namespace FSCTMM_HFT_2023241.Client
 
 
 
+            //KURUCZ VINCE FSCTMM
+
+
             RestService rest = new RestService("http://localhost:18364/");
             CrudServices crud = new CrudServices(rest);
             NonCrudService nonCrud = new NonCrudService(rest);
-
-
 
 
 
@@ -63,7 +64,6 @@ namespace FSCTMM_HFT_2023241.Client
 
             menu.Show();
 
-            Console.WriteLine("asd");
         }
     }
 }
