@@ -23,10 +23,9 @@ namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 
             var old = Read(entity.Id);
 
-            foreach (var prop in old.GetType().GetProperties())
-            {
-                prop.SetValue(old, prop.GetValue(entity));
-            }
+            old.TakeOffPlatform = entity.TakeOffPlatform;
+
+            old.Name = entity.Name;
 
             ctx.SaveChanges();
         }

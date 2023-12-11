@@ -47,6 +47,7 @@ namespace FSCTMM_2023241.Test
             TestAirports1.TakeOffPlatform = 6;
             TestAirports1.Name = "Osaka";
 
+
             TestAirports2 = new Airports();
             TestAirports2.Id = 2;
             TestAirports2.TakeOffPlatform = 3;
@@ -59,27 +60,33 @@ namespace FSCTMM_2023241.Test
             TestAirlpanes1.AirportId = 1;
             TestAirlpanes1.Capacity = 150;
             TestAirlpanes1.Speed = 700;
-            TestAirlpanes1.Airports = TestAirports1;
+
 
             TestAirlpanes2 = new Airplane();
             TestAirlpanes2.Id = 2;
             TestAirlpanes2.AirportId = 2;
             TestAirlpanes2.Capacity = 120;
             TestAirlpanes2.Speed = 300;
-            TestAirlpanes2.Airports = TestAirports2;
+
 
 
             TestCrew1 = new Crew();
             TestCrew1.Id = 1;
             TestCrew1.AirplaneId = 1;
-            TestCrew1.Airlpanes = TestAirlpanes1;
+            TestCrew1.AirportId = 1;
+            TestCrew1.Airports = TestAirports1;
+            TestCrew1.Airplanes = TestAirlpanes1;
+
             TestCrew1.Reputation = "Good";
             TestCrew1.NumberOfCrew = 9;
 
             TestCrew2 = new Crew();
             TestCrew2.Id = 2;
             TestCrew2.AirplaneId = 2;
-            TestCrew2.Airlpanes = TestAirlpanes2;
+            TestCrew2.AirportId = 2;
+            TestCrew2.Airports = TestAirports2;
+            TestCrew2.Airplanes = TestAirlpanes2;
+
             TestCrew2.Reputation = "Bad";
             TestCrew2.NumberOfCrew = 5;
 
@@ -108,11 +115,11 @@ namespace FSCTMM_2023241.Test
 
 
         [Test]
-        public void AvgSeatsTest()
+        public void BigCrewPlanes()
         {
             //mivelhogy egy gyüjtemnénnyel tér vissza, a várt redmény egy tuajdonságát ellenőrizzük
 
-            var plane = CrewLogic1.avgseats();
+            var plane = CrewLogic1.BigCrewPlanes();
 
             Assert.That(plane, Has.Exactly(1).Property("Speed").EqualTo(700));
         }

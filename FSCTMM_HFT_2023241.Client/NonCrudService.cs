@@ -20,7 +20,7 @@ namespace FSCTMM_HFT_2023241.Client
             var items = rest.Get<Airplane>("Custom/BigCrewPlanes");
             foreach (var item in items)
             {
-                Console.WriteLine("Repülő aminek nagy a személyzete: "+item.Id);
+                Console.WriteLine("Repülő aminek nagy a személyzete ID: "+item.Id);
             }
             Console.ReadLine();
         }
@@ -30,7 +30,7 @@ namespace FSCTMM_HFT_2023241.Client
             var items = rest.Get<Crew>("Custom/CrewWithBigPlaneSpeed");
             foreach (var item in items)
             {
-                Console.WriteLine("Személyzet aminek gyors a repülője: "+item.Id);
+                Console.WriteLine("Személyzet aminek gyors a repülője ID: "+item.Id);
             }
             Console.ReadLine();
         }
@@ -61,7 +61,7 @@ namespace FSCTMM_HFT_2023241.Client
             var items = rest.Get<Airplane>("Custom/BigAirportsFastPlanes");
             foreach (var item in items)
             {
-                Console.WriteLine("Nagy kapacitásű, gyors repülőgépek: : "+item.Id);
+                Console.WriteLine("Nagy kapacitású, gyors repülőgépek ID:  "+item.Id);
             }
             Console.ReadLine();
         }

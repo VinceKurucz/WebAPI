@@ -24,14 +24,14 @@ namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 
         public override void Update(Crew entity)
         {
-            int entityID = entity.Id;
+
 
             var old = Read(entity.Id);
             
-            foreach (var prop in old.GetType().GetProperties())
-            {
-                prop.SetValue(old, prop.GetValue(entity));
-            }
+            old.AirportId = entity.AirportId;
+            old.AirplaneId = entity.AirplaneId;
+            old.Reputation = entity.Reputation;
+            old.NumberOfCrew = entity.NumberOfCrew;
 
             ctx.SaveChanges();
         }

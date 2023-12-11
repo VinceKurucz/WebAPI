@@ -26,14 +26,9 @@ namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
             var old = Read(entity.Id);
 
             old.Capacity = entity.Capacity;
-            old.Id = entity.Id;
             old.Speed = entity.Speed;
             old.AirportId = entity.AirportId;
 
-            //foreach (var prop in old.GetType().GetProperties())
-            //{    
-            //    prop.SetValue(old, prop.GetValue(entity));
-            //}
 
             ctx.SaveChanges();
         }
