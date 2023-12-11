@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 {
-    public class CrewRepository : Repository<Crew>, Irepository<Crew>
+    public class CrewRepository : Repository<Crew>
     {
 
         public CrewRepository(AirplaneDbContext ctx) : base(ctx)
@@ -16,15 +16,18 @@ namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 
         public override Crew Read(int id)
         {
+
             return ctx.crew.FirstOrDefault(x => x.Id == id);
+                  
         }
 
 
         public override void Update(Crew entity)
         {
+            int entityID = entity.Id;
 
             var old = Read(entity.Id);
-
+            
             foreach (var prop in old.GetType().GetProperties())
             {
                 prop.SetValue(old, prop.GetValue(entity));

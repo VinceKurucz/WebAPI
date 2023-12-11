@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FSCTMM_HFT_2023241.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -44,6 +45,8 @@ namespace FSCTMM_HFT_2023241.Client
 
         public void List<T>()
         {
+
+
             var properties = typeof(T).GetProperties().Where(p => p.GetAccessors().All(a => !a.IsVirtual));
             
             var items = Rest.Get<T>(typeof(T).Name);
@@ -70,7 +73,7 @@ namespace FSCTMM_HFT_2023241.Client
             Console.WriteLine("Enter the Id to update:  ");
             int id = int.Parse(Console.ReadLine());
             var instance = Rest.Get<T>(id, typeof(T).Name);
-            var properties = typeof(T).GetProperties().Where(p => p.GetAccessors().All(a => !a.IsVirtual) && p.Name != "id");
+            var properties = typeof(T).GetProperties().Where(p => p.GetAccessors().All(a => !a.IsVirtual) && p.Name != "Id");
             foreach (var property in properties)
             {
                 Console.Write($"New: {property.Name} Old: {property.GetValue(instance)}=  ");
@@ -84,6 +87,7 @@ namespace FSCTMM_HFT_2023241.Client
                     property.SetValue(instance, input);
                 }
             }
+            
             Rest.Put(instance, typeof(T).Name);
          
         }
@@ -91,6 +95,7 @@ namespace FSCTMM_HFT_2023241.Client
         public void Delete<T>()
         {
             Console.WriteLine("Enter the Id to delete: ");
+            
             int id = int.Parse(Console.ReadLine());
 
             Rest.Delete(id, typeof(T).Name);

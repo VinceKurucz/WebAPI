@@ -88,8 +88,6 @@ namespace FSCTMM_HFT_2023241.Repository
             );
 
 
-
-
             base.OnModelCreating(modelBuilder);
         }
     }

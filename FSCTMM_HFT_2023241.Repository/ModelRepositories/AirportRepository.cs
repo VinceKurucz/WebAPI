@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FSCTMM_HFT_2023241.Repository.ModelRepositories
 {
-    public class AirportRepository : Repository<Airports>, Irepository<Airports>
+    public class AirportRepository : Repository<Airports> //Irepository<Airports>
     {
         public AirportRepository(AirplaneDbContext ctx) : base(ctx)
         {

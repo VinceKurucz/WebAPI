@@ -29,6 +29,7 @@ namespace FSCTMM_HFT_2023241.Models
         [JsonIgnore]
         [NotMapped]
         public virtual Airplane Airplanes { get; set; }
+
         [JsonIgnore]
         [NotMapped]
 

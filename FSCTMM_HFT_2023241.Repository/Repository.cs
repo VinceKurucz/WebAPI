@@ -24,6 +24,7 @@ namespace FSCTMM_HFT_2023241.Repository
         public void Delete(int id)
         {
             ctx.Set<T>().Remove(Read(id));
+            ctx.SaveChanges();
         }
 
         public abstract T Read(int id);
